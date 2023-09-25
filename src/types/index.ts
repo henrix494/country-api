@@ -1,7 +1,12 @@
 export interface Country {
-    flags : string;
-    name : string;
+    flags :{
+        png:string;
+    } 
     population: number;
     region:string;
     capital:string;
+    png:string;
+    name:{
+        common:string;
+    }
 }
