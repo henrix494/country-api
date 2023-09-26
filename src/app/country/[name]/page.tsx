@@ -4,7 +4,7 @@ import { Country } from "@/types";
 interface pageProps {
   params: { name: string };
 }
-export default function page({ params }: { params: { name: string } }) {
+export default function Page({ params }: { params: { name: string } }) {
   const [data,setData] = useState<Country[]>([])
 
   useEffect(() => {
