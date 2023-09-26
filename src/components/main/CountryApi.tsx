@@ -7,7 +7,6 @@ const baseUrl = "https://restcountries.com/v3.1/all";
 
 export default function CountryApi(props:any) {
   const [data, setData] = useState<Country[]>([]);
-  const [filterData,setFilterData] = useState<Country[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
