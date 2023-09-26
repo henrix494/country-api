@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 
 const baseUrl = "https://restcountries.com/v3.1/all";
 
-export default function CountryApi(props) {
+export default function CountryApi(props:any) {
   const [data, setData] = useState<Country[]>([]);
   const [filterData,setFilterData] = useState<Country[]>([]);
   const [isLoading, setIsLoading] = useState(false);

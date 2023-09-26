@@ -19,7 +19,7 @@ const customStyles = {
     
   })
 };
-export default function Search(props) {
+export default function Search(props:any) {
   const [region, setRegion] = useState<string | null>('');
   return (
     <div className='flex items-stretch justify-between max-lg:flex-col max-lg:gap-10  '>
