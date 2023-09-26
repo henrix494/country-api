@@ -55,7 +55,7 @@ export default function CountryApi(props:any) {
   // Filter the data based on props.filter
   const filteredData = data.filter((item) => {
     if (!props.filter) {
-      return true; // If no filter, return all items
+      return true; 
     }
     return item.region.includes(props.filter);
   });
