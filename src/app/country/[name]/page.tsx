@@ -1,11 +1,9 @@
 "use client"
 import { useEffect,useState } from "react";
 import { Country } from "@/types";
-import Nav from "@/components/nav/Nav";
 interface pageProps {
   params: { name: string };
 }
-// https://restcountries.com/v3.1/name/${item.name.common}?fullText=true
 export default function page({ params }: { params: { name: string } }) {
   const [data,setData] = useState<Country[]>([])
 
@@ -20,8 +18,8 @@ export default function page({ params }: { params: { name: string } }) {
   console.log(data)
   return (  
      <div className="mt-20"> 
-{data.map((item => {
-  return (<img src={item.flags.png} />)
+{data.map((item,index) => {
+  return (<img key={index} src={item.flags.png} />)
 }))}
     </div>
     )
