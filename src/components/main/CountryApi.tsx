@@ -23,6 +23,7 @@ export default function CountryApi(props:any) {
       setIsLoading(false);
     }
   };
+  console.log(data)
 
   const loadMoreData = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -63,7 +64,7 @@ export default function CountryApi(props:any) {
   return (
     <div className="mt-10 flex flex-wrap justify-between gap-10 max-lg:justify-center">
       {!props.filter ? paginatedData.map((item, index) => (
-        <Link href={`/country`} key={index}><Card  >
+        <Link href={`country/${item.name.common}`} key={index}><Card  >
           <Image src={item.flags.png} alt={item.name.common} className="h-[200px]" width={300} height={400} />
           <div className="px-6 py-10 rounded-md">
             <p className="font-bold">{item.name.common}</p>
@@ -83,7 +84,7 @@ export default function CountryApi(props:any) {
         </Card></Link>
         
       )):filteredData.map((item, index) => (
-       <Link href={`/country`} key={index}><Card  >
+       <Link href={`country/${item.name.common}`} key={index}><Card  >
           <Image src={item.flags.png} alt={item.name.common} className="h-[200px]" width={300} height={400} />
           <div className="px-6 py-10 rounded-md">
             <p className="font-bold">{item.name.common}</p>

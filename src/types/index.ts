@@ -10,3 +10,8 @@ export interface Country {
         common:string;
     }
 }
+
+
+export interface pageProps {
+    params : {name :string}
+}

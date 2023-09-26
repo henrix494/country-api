@@ -23,7 +23,7 @@ const toggleDarkMode = () => {
   },[])
 
   return (
-    <nav className="h-[70px] drop-shadow-md ">
+    <nav className="h-[70px] drop-shadow-md z-50 fixed top-0 w-full  ">
         <div className="flex justify-between px-32 max-lg:px-2 items-center h-full dark:bg-dme bg-whitee  ">
             <div >
                 <h1 className=" dark:text-whitee text-[1.5rem] max-lg:text-[0.8rem] font-semibold">Where in the world?</h1>
