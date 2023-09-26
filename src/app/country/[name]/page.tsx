@@ -18,7 +18,7 @@ export default function page({ params }: { params: { name: string } }) {
   console.log(data)
   return (  
      <div className="mt-20"> 
-{data.map((item,index) => {
+{data.map(((item,index) => {
   return (<img key={index} src={item.flags.png} />)
 }))}
     </div>
