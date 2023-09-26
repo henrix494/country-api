@@ -1,18 +1,26 @@
 "use client"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 export default function Nav() {
 const [isDarkMode,setDarkMode] = useState(false) 
-  const toggleDarkMode = () => {
-    setDarkMode(prev => !prev)
-    if(!isDarkMode){
-      document.documentElement.classList.add('dark')
-
-    }
-    else{
-      document.documentElement.classList.remove('dark')
-
-    }
+const toggleDarkMode = () => {
+  setDarkMode(prev => !prev);
+  if (!isDarkMode) {
+    localStorage.setItem("theme", "dark");
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem("theme", "");
   }
+  }
+  useEffect(() => {
+ if(localStorage.getItem("theme")){
+  document.documentElement.classList.add('dark');
+  setDarkMode(true)
+ }else{
+  document.documentElement.classList.remove('dark');
+  setDarkMode(false)
+ }
+  },[])
 
   return (
     <nav className="h-[70px] drop-shadow-md ">
