@@ -13,7 +13,8 @@ export interface Country {
         official:string;
     },
     tld :string;
-    currencies : any
+    currencies : any,
+    borders:string[];
        
     
 }

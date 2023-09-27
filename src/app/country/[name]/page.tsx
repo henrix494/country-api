@@ -26,6 +26,13 @@ export default function Page({ params }: { params: { name: string } }) {
     fetchData();
   }, []);
 
+  const onClickBorder = async (name: string) => {
+    const data = await fetch(`https://restcountries.com/v3.1/alpha/${name}`);
+    const json = await data.json();
+    setData(json);
+    setIsLoading(false);
+  };
+
   return (
     <div className="mt-20 max-lg:p-10 relative   ">
       {!isLoading && (
@@ -116,6 +123,19 @@ export default function Page({ params }: { params: { name: string } }) {
                       </span>
                     </p>
                   </div>
+                </div>
+                <div className="mt-10 flex gap-5 flex-wrap items-center">
+                  <h2>Border Countries:</h2>
+                  {item.borders?.map((item: any) => {
+                    return (
+                      <p
+                        className=" hover:opacity-80 transition-all flex flex-wrap  items-center  cursor-pointer   dark:text-whitee dark:bg-dme px-16 py-2 drop-shadow-lg rounded-lg border-2 border-[#00000060]"
+                        onClick={() => onClickBorder(item)}
+                      >
+                        {item}
+                      </p>
+                    );
+                  })}
                 </div>
               </div>
             </div>
