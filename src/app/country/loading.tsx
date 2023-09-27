@@ -1,7 +1,7 @@
 import "./loading.css";
 export default function Loading() {
   return (
-    <div className="flex justify-around w-screen    ">
+    <div className="flex justify-around w-screen max-lg:flex-col    ">
       <div className="item w-full  ">
         <div className="animated-background rect1"></div>
       </div>{" "}

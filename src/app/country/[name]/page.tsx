@@ -28,26 +28,29 @@ export default function Page({ params }: { params: { name: string } }) {
 
   return (
     <div className="mt-20 max-lg:p-10 relative   ">
-      <div
-        className="flex items-center  cursor-pointer  absolute top-[-20%] left-[4.8%] dark:text-whitee dark:bg-dme px-16 py-2 drop-shadow-lg rounded-lg border-2 border-[#00000060]"
-        onClick={() => router.back()}
-      >
-        <svg
-          className="mr-2"
-          stroke="currentColor"
-          fill="currentColor"
-          stroke-width="0"
-          viewBox="0 0 1024 1024"
-          height="1em"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
+      {!isLoading && (
+        <div
+          className="flex max-lg:top-0 max-lg:left-8 items-center  cursor-pointer  absolute top-[-20%] left-[4.8%] dark:text-whitee dark:bg-dme px-16 py-2 drop-shadow-lg rounded-lg border-2 border-[#00000060]"
+          onClick={() => router.back()}
         >
-          <path d="M872 474H286.9l350.2-304c5.6-4.9 2.2-14-5.2-14h-88.5c-3.9 0-7.6 1.4-10.5 3.9L155 487.8a31.96 31.96 0 0 0 0 48.3L535.1 866c1.5 1.3 3.3 2 5.2 2h91.5c7.4 0 10.8-9.2 5.2-14L286.9 550H872c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"></path>
-        </svg>
-        <button>Back</button>
-      </div>
+          <svg
+            className="mr-2"
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 1024 1024"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M872 474H286.9l350.2-304c5.6-4.9 2.2-14-5.2-14h-88.5c-3.9 0-7.6 1.4-10.5 3.9L155 487.8a31.96 31.96 0 0 0 0 48.3L535.1 866c1.5 1.3 3.3 2 5.2 2h91.5c7.4 0 10.8-9.2 5.2-14L286.9 550H872c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"></path>
+          </svg>
+          <button>Back</button>
+        </div>
+      )}
+
       {isLoading ? (
-        <div className="flex w-full  h-screen items-center ">
+        <div className="flex w-full max-lg:flex-col  h-screen items-center  ">
           <Loading />
         </div>
       ) : (
@@ -58,7 +61,7 @@ export default function Page({ params }: { params: { name: string } }) {
           return (
             <div
               key={index}
-              className=" flex  w-screen justify-around dark:text-whitee max-lg:flex-col max-lg:w-auto"
+              className=" flex  w-screen justify-around dark:text-whitee max-lg:flex-col max-lg:w-auto max-lg:mt-10"
             >
               <div className=" ml-10 max-lg:ml-0  ">
                 <img
