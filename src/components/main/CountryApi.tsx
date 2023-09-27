@@ -2,18 +2,17 @@ import Card from "../UI/Card";
 import Image from "next/image";
 import { Country } from "@/types";
 import { useState, useEffect, useRef } from "react";
-import Link from 'next/link'
+import Link from "next/link";
 import Loading from "@/loading";
 const baseUrl = "https://restcountries.com/v3.1/all";
 
-export default function CountryApi(props:any) {
+export default function CountryApi(props: any) {
   const [data, setData] = useState<Country[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
 
   const fetchData = async () => {
-    
     try {
       const response = await fetch(baseUrl);
       const jsonData = await response.json();
@@ -24,7 +23,7 @@ export default function CountryApi(props:any) {
       setIsLoading(false);
     }
   };
-  console.log(data)
+  console.log(data);
 
   const loadMoreData = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -56,60 +55,78 @@ export default function CountryApi(props:any) {
   // Filter the data based on props.filter
   const filteredData = data.filter((item) => {
     if (!props.filter) {
-      return true; 
+      return true;
     }
     return item.region.includes(props.filter);
   });
 
-
   return (
     <div className="mt-10 flex flex-wrap justify-between gap-10 max-lg:justify-center">
-      {isLoading ? <div className="flex  w-[100%] gap-10 flex-wrap justify-center"><Loading/></div>: !props.filter ? paginatedData.map((item, index) => (
-        <Link href={`country/${item.name.common}`} key={index}><Card  >
-          <Image src={item.flags.png} alt={item.name.common} className="h-[200px]" width={300} height={400} />
-          <div className="px-6 py-10 rounded-md">
-            <p className="font-bold">{item.name.common}</p>
-            <p>
-              <span>Population: </span>
-              {item.population.toLocaleString()}
-            </p>
-            <p>
-              <span>Region: </span>
-              {item.region}
-            </p>
-            <p>
-              <span>Capital: </span>
-              {item.capital}
-            </p>
-          </div>
-        </Card></Link>
-        
-      )):filteredData.map((item, index) => (
-       <Link href={`country/${item.name.common}`} key={index}><Card  >
-          <Image src={item.flags.png} alt={item.name.common} className="h-[200px]" width={300} height={400} />
-          <div className="px-6 py-10 rounded-md">
-            <p className="font-bold">{item.name.common}</p>
-            <p>
-              <span>Population: </span>
-              {item.population.toLocaleString()}
-            </p>
-            <p>
-              <span>Region: </span>
-              {item.region}
-            </p>
-            <p>
-              <span>Capital: </span>
-              {item.capital}
-            </p>
-          </div>
-        </Card></Link>
-      ))}
-     
-      
-      {paginatedData.length < data.length && (
-        <div ref={loaderDivRef} />
+      {isLoading ? (
+        <div className="flex  w-[100%] gap-10 flex-wrap justify-center">
+          <Loading />
+        </div>
+      ) : !props.filter ? (
+        paginatedData.map((item, index) => (
+          <Link href={`country/${item.name.common}`} key={index}>
+            <Card>
+              <Image
+                src={item.flags.png}
+                alt={item.name.common}
+                className="h-[200px]"
+                width={300}
+                height={400}
+              />
+              <div className="px-6 py-10 rounded-md">
+                <p className="font-bold">{item.name.common}</p>
+                <p>
+                  <span>Population: </span>
+                  {item.population.toLocaleString()}
+                </p>
+                <p>
+                  <span>Region: </span>
+                  {item.region}
+                </p>
+                <p>
+                  <span>Capital: </span>
+                  {item.capital}
+                </p>
+              </div>
+            </Card>
+          </Link>
+        ))
+      ) : (
+        filteredData.map((item, index) => (
+          <Link href={`country/${item.name.common}`} key={index}>
+            <Card>
+              <Image
+                src={item.flags.png}
+                alt={item.name.common}
+                className="h-[200px]"
+                width={300}
+                height={400}
+              />
+              <div className="px-6 py-10 rounded-md">
+                <p className="font-bold">{item.name.common}</p>
+                <p>
+                  <span>Population: </span>
+                  {item.population.toLocaleString()}
+                </p>
+                <p>
+                  <span>Region: </span>
+                  {item.region}
+                </p>
+                <p>
+                  <span>Capital: </span>
+                  {item.capital}
+                </p>
+              </div>
+            </Card>
+          </Link>
+        ))
       )}
-      
+
+      {paginatedData.length < data.length && <div ref={loaderDivRef} />}
     </div>
   );
 }
