@@ -1,6 +1,7 @@
 export interface Country {
     flags :{
         png:string;
+        svg:string;
     } 
     population: number;
     region:string;
@@ -8,6 +9,7 @@ export interface Country {
     png:string;
     name:{
         common:string;
+        official:string;
     }
 }
 

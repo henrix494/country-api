@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en " >
       
-      <body className={inter.className + ' bg-[#fafafa] dark:bg-dmBG' }> 
+      <body className={inter.className + ' bg-[#fafafa] dark:bg-dmBG flex  items-center h-screen max-lg:block' }> 
         <Nav/>
         { children}
         </body>

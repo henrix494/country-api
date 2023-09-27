@@ -3,16 +3,17 @@ import Image from "next/image";
 import { Country } from "@/types";
 import { useState, useEffect, useRef } from "react";
 import Link from 'next/link'
+import Loading from "@/loading";
 const baseUrl = "https://restcountries.com/v3.1/all";
 
 export default function CountryApi(props:any) {
   const [data, setData] = useState<Country[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
 
   const fetchData = async () => {
-    setIsLoading(true);
+    
     try {
       const response = await fetch(baseUrl);
       const jsonData = await response.json();
@@ -63,14 +64,14 @@ export default function CountryApi(props:any) {
 
   return (
     <div className="mt-10 flex flex-wrap justify-between gap-10 max-lg:justify-center">
-      {!props.filter ? paginatedData.map((item, index) => (
+      {isLoading ? <div className="flex  w-[100%] gap-10 flex-wrap justify-center"><Loading/></div>: !props.filter ? paginatedData.map((item, index) => (
         <Link href={`country/${item.name.common}`} key={index}><Card  >
           <Image src={item.flags.png} alt={item.name.common} className="h-[200px]" width={300} height={400} />
           <div className="px-6 py-10 rounded-md">
             <p className="font-bold">{item.name.common}</p>
             <p>
               <span>Population: </span>
-              {item.population}
+              {item.population.toLocaleString()}
             </p>
             <p>
               <span>Region: </span>
@@ -90,7 +91,7 @@ export default function CountryApi(props:any) {
             <p className="font-bold">{item.name.common}</p>
             <p>
               <span>Population: </span>
-              {item.population}
+              {item.population.toLocaleString()}
             </p>
             <p>
               <span>Region: </span>
@@ -104,10 +105,11 @@ export default function CountryApi(props:any) {
         </Card></Link>
       ))}
      
-      {isLoading && <p className="text-[red] mt-10 text-4xl">Loading</p>}
+      
       {paginatedData.length < data.length && (
         <div ref={loaderDivRef} />
       )}
+      
     </div>
   );
 }
