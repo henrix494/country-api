@@ -24,7 +24,6 @@ export default function CountryApi(props: any) {
       setIsLoading(false);
     }
   };
-  console.log(data);
 
   const loadMoreData = () => {
     setCurrentPage((prevPage) => prevPage + 1);
