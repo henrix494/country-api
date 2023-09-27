@@ -10,6 +10,7 @@ export default function CountryApi(props: any) {
   const [data, setData] = useState<Country[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+
   const itemsPerPage = 12;
 
   const fetchData = async () => {
@@ -54,10 +55,21 @@ export default function CountryApi(props: any) {
 
   // Filter the data based on props.filter
   const filteredData = data.filter((item) => {
-    if (!props.filter) {
+    if (!props.filter && !props.serach) {
       return true;
     }
-    return item.region.includes(props.filter);
+
+    if (props.serach.length > 0) {
+      try {
+        const regex = new RegExp(props.serach, "i"); // 'i' flag for case-insensitive search
+        return regex.test(item.name.common);
+      } catch (error) {
+        console.error("Invalid regex pattern:", error);
+        return false; // Return false if the regex pattern is invalid
+      }
+    } else if (props.filter) {
+      return item.region.includes(props.filter);
+    }
   });
 
   return (
@@ -66,7 +78,7 @@ export default function CountryApi(props: any) {
         <div className="flex  w-[100%] gap-10 flex-wrap justify-center">
           <Loading />
         </div>
-      ) : !props.filter ? (
+      ) : !props.serach && !props.filter ? (
         paginatedData.map((item, index) => (
           <Link href={`country/${item.name.common}`} key={index}>
             <Card>
@@ -77,7 +89,7 @@ export default function CountryApi(props: any) {
                 width={300}
                 height={400}
               />
-              <div className="px-6 py-10 rounded-md">
+              <div className="px-6 py-10 rounded-md ">
                 <p className="font-bold">{item.name.common}</p>
                 <p>
                   <span>Population: </span>

@@ -24,6 +24,7 @@ export default function Search(props: any) {
     <div className="flex items-stretch justify-between max-lg:flex-col max-lg:gap-10  ">
       <div>
         <input
+          onChange={(e) => props.getSearchFromC(e.target.value)}
           type="text"
           className="  text-lmTEXT placeholder:text-lmTEXT w-[200%] max-lg:w-full rounded-md border-none h-[50px] dark:bg-dme dark:text-whitee dark:placeholder:text-whitee drop-shadow-md px-10"
           placeholder="Search for a country"
