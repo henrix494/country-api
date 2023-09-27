@@ -20,7 +20,7 @@ export default function Page({ params }: { params: { name: string } }) {
      <div className="mt-20 max-lg:p-10 "> 
 {data.map(((item,index) => {
   return (
-    <div className=" flex  w-screen justify-around dark:text-whitee max-lg:flex-col max-lg:w-auto" > 
+    <div key={index} className=" flex  w-screen justify-around dark:text-whitee max-lg:flex-col max-lg:w-auto" > 
       <div className=" ml-10 max-lg:ml-0  ">
         <img className="w-[700px] h-[500px] max-lg:h-auto max-lg:w-[80vw] " key={index} src={item.flags.svg} />
       </div>
