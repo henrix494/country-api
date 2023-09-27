@@ -72,13 +72,13 @@ export default function Nav() {
             </svg>
           )}
           {isDarkMode ? (
-            <h4 className=" dark:text-whitee text-[0.9rem] font-this">
+            <p className=" dark:text-whitee text-[0.9rem] font-this">
               Light Mode
-            </h4>
+            </p>
           ) : (
-            <h4 className=" dark:text-whitee text-[0.9rem] font-this">
+            <p className=" dark:text-whitee text-[0.9rem] font-this">
               Dark Mode
-            </h4>
+            </p>
           )}
         </div>
       </div>
