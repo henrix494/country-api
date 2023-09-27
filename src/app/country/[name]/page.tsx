@@ -29,7 +29,7 @@ export default function Page({ params }: { params: { name: string } }) {
   return (
     <div className="mt-20 max-lg:p-10 relative   ">
       <div
-        className="flex items-center  absolute top-[-20%] left-[4.8%] dark:text-whitee dark:bg-dme px-16 py-2 drop-shadow-lg rounded-lg border-2 border-[#00000060]"
+        className="flex items-center  cursor-pointer  absolute top-[-20%] left-[4.8%] dark:text-whitee dark:bg-dme px-16 py-2 drop-shadow-lg rounded-lg border-2 border-[#00000060]"
         onClick={() => router.back()}
       >
         <svg
