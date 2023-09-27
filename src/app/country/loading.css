@@ -1,0 +1,124 @@
+@-webkit-keyframes flash {
+	0% {
+		background-position: -468px 0;
+	}
+	100% {
+		background-position: 468px 0;
+	}
+}
+
+@keyframes flash {
+	0% {
+		background-position: -468px 0;
+	}
+	100% {
+		background-position: 468px 0;
+	}
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+.wrapper {
+	color: #141823;
+	padding: 20px;
+	padding-bottom: 60px;
+	display: flex;
+	
+}
+
+.item {
+	background: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	position: relative;
+	max-width: 800px;
+	height: 600px ;
+}
+.item2{
+	background: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	position: relative;
+	max-width: 800px;
+	height: 600px ;
+	overflow: hidden;
+}
+
+.round-box {
+	width: 100%;
+	height: 150px;
+	
+}
+
+.animated-background {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-name: flash;
+	animation-name: flash;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function: linear;
+	background: -webkit-linear-gradient(
+		left,
+		#eeeeee 8%,
+		#dddddd 18%,
+		#eeeeee 33%
+	);
+	background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+	-webkit-background-size: 800px 104px;
+	position: relative;
+}
+
+.rect1 {
+	width: 100%;
+	float: left;
+	top: 0px;
+	left: 0px;
+	
+	height: 100%;
+	position: absolute;
+}
+
+.rect2 {
+	width: 70%;
+	float: left;
+	top: 240px;
+	left: 25px;
+	margin-top: 10px;
+	height: 10px;
+	position: absolute;
+}
+
+
+.rect3 {
+	width: 70%;
+	float: left;
+	top: 180px;
+	left: 25px;
+	margin-top: 10px;
+	height: 10px;
+	position: absolute;
+}
+
+.rect4 {
+	width: 75%;
+	float: left;
+	top: 200px;
+	left: 25px;
+	margin-top: 10px;
+	height: 10px;
+	position: absolute;
+}
+
+.rect5 {
+	width: 75%;
+	float: left;
+	top: 220px;
+	left: 25px;
+	margin-top: 10px;
+	height: 10px;
+	position: absolute;
+}
