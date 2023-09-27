@@ -13,12 +13,9 @@ export interface Country {
         official:string;
     },
     tld :string;
-    currencies : {
-        curn : {
-            name:string;
-            symbol: string;
-        }
-    }
+    currencies : any
+       
+    
 }
 
 

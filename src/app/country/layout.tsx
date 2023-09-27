@@ -18,7 +18,7 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          " bg-[#ebe9e9] dark:bg-dmBG flex  items-center h-screen max-lg:block"
+          " bg-[#f8f7f7] dark:bg-dmBG flex  items-center h-screen max-lg:block"
         }
       >
         <Nav />

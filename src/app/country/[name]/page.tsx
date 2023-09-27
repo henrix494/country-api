@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Country } from "@/types";
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
 import Loading from "../loading";
 interface pageProps {
   params: { name: string };
@@ -17,7 +17,7 @@ export default function Page({ params }: { params: { name: string } }) {
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(
-        `https://restcountries.com/v3.1/name/${params.name}?fullText=true`
+        `https://restcountries.com/v3.1/name/${params.name}`
       );
       const json = await data.json();
       setData(json);
@@ -30,7 +30,7 @@ export default function Page({ params }: { params: { name: string } }) {
     <div className="mt-20 max-lg:p-10 relative   ">
       {!isLoading && (
         <div
-          className="flex max-lg:top-0 max-lg:left-8 items-center  cursor-pointer  absolute top-[-20%] left-[4.8%] dark:text-whitee dark:bg-dme px-16 py-2 drop-shadow-lg rounded-lg border-2 border-[#00000060]"
+          className=" hover:opacity-80 transition-all flex max-lg:top-0 max-lg:left-8 items-center  cursor-pointer  absolute top-[-20%] left-[4.8%] dark:text-whitee dark:bg-dme px-16 py-2 drop-shadow-lg rounded-lg border-2 border-[#00000060]"
           onClick={() => router.back()}
         >
           <svg
@@ -54,10 +54,9 @@ export default function Page({ params }: { params: { name: string } }) {
           <Loading />
         </div>
       ) : (
-        data.map((item, index) => {
-          const curnnces = Object?.values(item.currencies)[0];
-          const money = Object?.values(curnnces);
-          console.log(money);
+        data?.map((item, index) => {
+          const money = item.currencies?.[Object.keys(item.currencies)?.[0]];
+
           return (
             <div
               key={index}
@@ -95,21 +94,26 @@ export default function Page({ params }: { params: { name: string } }) {
                       <span className=" font-normal">{item.subregion}</span>
                     </p>
                     <p className=" font-bold">
-                      Capital{" "}
+                      Capital :{" "}
                       <span className=" font-normal">{item.capital}</span>
                     </p>
                   </div>
                   <div className="flex flex-col gap-2">
                     <p className=" font-bold ">
                       Top Level Domain :{" "}
-                      <span className=" font-normal">{item.tld}</span>
+                      <span className=" font-normal pl-1">{item.tld}</span>
                     </p>
                     <p className=" font-bold">
                       Currencies :{" "}
-                      <span className=" font-normal">{money[0]}</span>
+                      <span className=" font-normal pl-1">
+                        {money ? money.name : "no info"}
+                      </span>
                     </p>
                     <p className=" font-bold">
-                      Symbol : <span className=" font-normal">{money[1]}</span>
+                      Symbol :{" "}
+                      <span className=" font-normal pl-1">
+                        {money ? money.symbol : "no info"}
+                      </span>
                     </p>
                   </div>
                 </div>
